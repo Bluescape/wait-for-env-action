@@ -4,10 +4,10 @@ on: [pull_request]
 
 jobs:
   jest:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
     - uses: actions/checkout@v1
     - name: Cache node modules
@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Jest and Coverage
-      uses: landon-martin/code-coverage-commenter@v0.0.8
+      uses: bluescape/code-coverage-commenter@v0.0.5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         coverage-command: "npm run test -- --coverage"
