@@ -12,24 +12,10 @@ Create a workflow `.yml` file in your `.github/workflows` directory. An example 
 - `timeout` (optional): The amount of time (in minutes) to wait for the environment to be healthy.
 
 ## Example Workflow
-Before a precommit, run a health check on the environment.
 ```yaml
-name: E2E Precommit Testing
-
-on: [deployment, pull_request]
-
-jobs:
-  npm_setup:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 10.X
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-      - name: Wait For Environment to be healthy
-        uses: landon-martin/env-health-checker@v1.0.4
-        with:
-          environment: staging.alpha.bluescape.io
-          timeout: 10
+  - name: Wait For Environment to be healthy
+    uses: bluescape/wait-for-env-action@v1.0.1
+    with:
+      environment: staging.alpha.bluescape.io
+      timeout: 10
 ```
