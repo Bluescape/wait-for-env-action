@@ -1,5 +1,5 @@
 {
-  "name": "bluescape/wait-for-env-action",
+  "name": "@bluescape/wait-for-env-action",
   "version": "1.0.1",
   "description": "Waits for a Bluescape Environment to be up and healthy.",
   "main": "index.js",
