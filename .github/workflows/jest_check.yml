@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Jest and Coverage
-      uses: bluescape/code-coverage-commenter@v0.0.5
+      uses: bluescape/code-coverage-action@v0.0.5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         coverage-command: "npm run test -- --coverage"
