@@ -12,10 +12,23 @@ Create a workflow `.yml` file in your `.github/workflows` directory. An example 
 - `timeout` (optional): The amount of time (in minutes) to wait for the environment to be healthy.
 
 ## Example Workflow
+Wait for a standard environment to be ready.
 ```yaml
   - name: Wait For Environment to be healthy
     uses: bluescape/wait-for-env-action@v1.0.1
     with:
       environment: apps.us.bluescape.com
       timeout: 10
+```
+Wait for a netlify environment to be healthy.
+```
+- name: Wait for Netlify client to be ready
+  uses: bluescape/wait-for-env-action@v1.0.1
+  with:
+    environment: apps.us.bluescape.com
+    is-netlify: true
+    netlify-service: 'netlify'
+    netlify-suffix: pr-${{ github.event.number }}
+    output-variable: BLUESCAPE_URL
+    timeout: 60
 ```
